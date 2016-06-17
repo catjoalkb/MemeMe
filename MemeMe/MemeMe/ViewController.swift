@@ -39,6 +39,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         shareButton.enabled = false
     }
     
+    // Hide the status bar programatically
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
@@ -129,6 +134,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let meme = Meme(topText: self.topTextField.text!, bottomText: self.BottomTextField.text!, image:
             imagePickerView.image!, memedImage: generateMemedImage())
+
     }
     
     func generateMemedImage() -> UIImage {
@@ -159,6 +165,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if (completed) {
                 self.save()
             }
+
         }
     }
 }
