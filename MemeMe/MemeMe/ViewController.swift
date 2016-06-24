@@ -15,7 +15,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var BottomTextField: UITextField!
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    
+    @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,7 +105,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // Move view upward when keyboard appears
     func keyboardWillShow(notification: NSNotification) {
         if self.BottomTextField.editing {
-            print("keyboard height: ", getKeyboardHeight(notification))
             self.view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
@@ -140,6 +140,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func generateMemedImage() -> UIImage {
         
         // TODO: Hide toolbar and navbar
+        navBar.hidden = true
+        toolBar.hidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -150,6 +152,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIGraphicsEndImageContext()
         
         // TODO:  Show toolbar and navbar       
+        navBar.hidden = false
+        toolBar.hidden = false
         
         return memedImage
     }
@@ -161,7 +165,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         shareActivityViewController.completionWithItemsHandler = {(activity, completed, items, error) in
             print("Activity: \(activity)\nCompleted: \(completed)\nItems: \(items)\nError: \(error)")
-            
             if (completed) {
                 self.save()
             }
