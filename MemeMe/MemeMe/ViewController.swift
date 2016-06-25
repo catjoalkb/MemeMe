@@ -18,9 +18,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var toolBar: UIToolbar!
     
+    
+    // MARK:- Setup outlook
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
@@ -28,16 +29,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSStrokeWidthAttributeName : 2.4
         ]
         
-        topTextField.text = "TOP"
-        BottomTextField.text = "BOTTOM"
-        topTextField.defaultTextAttributes = memeTextAttributes
-        BottomTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = .Center
-        BottomTextField.textAlignment = .Center
-        self.BottomTextField.delegate = self
-        self.topTextField.delegate = self
+        setupTextField(topTextField, text: "TOP", defaultTextAttributes: memeTextAttributes, textAlignment: .Center)
+        setupTextField(BottomTextField, text: "BOTTOM", defaultTextAttributes: memeTextAttributes, textAlignment: .Center)
         
         shareButton.enabled = false
+    }
+    
+    // Setup textField
+    func setupTextField(textField: UITextField, text: String, defaultTextAttributes: [String: AnyObject], textAlignment: NSTextAlignment) {
+        textField.text = text
+        textField.defaultTextAttributes = defaultTextAttributes
+        textField.textAlignment = textAlignment
+        textField.delegate = self
     }
     
     // Hide the status bar programatically
@@ -45,9 +48,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return true
     }
     
+    
+    // MARK:- Subscribe and unsubscribe notifications
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) // disable camera if unavailable
         self.view.frame.origin.y = 0
         self.subscribeToKeyboardNotifications()
     }
@@ -55,41 +60,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.unsubscribeFromKeyboardNotifications()
-    }
-
-    @IBAction func chooseAnImageFromAlbum(sender: UIBarButtonItem) {
-        let chooseController = UIImagePickerController()
-        chooseController.delegate = self
-        chooseController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(chooseController, animated: true, completion: nil)
-    }
-    
-    @IBAction func chooseAnImageFromCamera(sender: UIBarButtonItem) {
-        let chooseController = UIImagePickerController()
-        chooseController.delegate = self
-        chooseController.sourceType = UIImagePickerControllerSourceType.Camera
-        self.presentViewController(chooseController, animated: true, completion: nil)
-        
-        
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imagePickerView.image = image
-            dismissViewControllerAnimated(true, completion: nil)
-            
-            // enable share button
-            shareButton.enabled = true
-        }
-    }
-    
-    @IBAction func textFieldDidBeginEditing(textField: UITextField) {
-        textField.text = ""
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
     
     func subscribeToKeyboardNotifications() {
@@ -100,6 +70,45 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func unsubscribeFromKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    
+    // MARK:- Present view when click album or camera
+    @IBAction func chooseAnImageFromAlbum(sender: UIBarButtonItem) {
+        chooseAnImage(.SavedPhotosAlbum)
+    }
+    
+    @IBAction func chooseAnImageFromCamera(sender: UIBarButtonItem) {
+        chooseAnImage(.Camera)
+    }
+    
+    func chooseAnImage(sourceType: UIImagePickerControllerSourceType) {
+        let chooseController = UIImagePickerController()
+        chooseController.delegate = self
+        chooseController.sourceType = sourceType
+        self.presentViewController(chooseController, animated: true, completion: nil)
+    }
+    
+    // MARK:- Show image in UIImage
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imagePickerView.image = image
+            dismissViewControllerAnimated(true, completion: nil)
+            
+            // enable share button
+            shareButton.enabled = true
+        }
+    }
+    
+    
+    // MARK:- Edit text
+    @IBAction func textFieldDidBeginEditing(textField: UITextField) {
+        textField.text = ""
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     // Move view upward when keyboard appears
@@ -122,6 +131,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return keyboardSize.CGRectValue().height
     }
     
+    
+    // MARK:- Save image
     struct Meme {
         let topText: String
         let bottomText: String
@@ -139,7 +150,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func generateMemedImage() -> UIImage {
         
-        // TODO: Hide toolbar and navbar
+        // Hide toolbar and navbar
         navBar.hidden = true
         toolBar.hidden = true
         
@@ -151,12 +162,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        // TODO:  Show toolbar and navbar       
+        // Show toolbar and navbar
         navBar.hidden = false
         toolBar.hidden = false
         
         return memedImage
     }
+    
+    
+    // MARK:- Share image
     @IBAction func shareImage(sender: AnyObject) {
         let meme = generateMemedImage()
         let shareActivityViewController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
