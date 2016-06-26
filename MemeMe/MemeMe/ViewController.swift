@@ -26,7 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName : 2.4
+            NSStrokeWidthAttributeName : -3.0
         ]
         
         setupTextField(topTextField, text: "TOP", defaultTextAttributes: memeTextAttributes, textAlignment: .Center)
@@ -53,13 +53,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) // disable camera if unavailable
-        self.view.frame.origin.y = 0
-        self.subscribeToKeyboardNotifications()
+        view.frame.origin.y = 0
+        subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.unsubscribeFromKeyboardNotifications()
+        unsubscribeFromKeyboardNotifications()
     }
     
     func subscribeToKeyboardNotifications() {
@@ -86,7 +86,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let chooseController = UIImagePickerController()
         chooseController.delegate = self
         chooseController.sourceType = sourceType
-        self.presentViewController(chooseController, animated: true, completion: nil)
+        presentViewController(chooseController, animated: true, completion: nil)
     }
     
     // MARK:- Show image in UIImage
@@ -113,15 +113,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // Move view upward when keyboard appears
     func keyboardWillShow(notification: NSNotification) {
-        if self.BottomTextField.editing {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        if BottomTextField.editing {
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
     
     // Move view downward when keyboard disappears
     func keyboardWillHide(notification: NSNotification) {
-        if self.BottomTextField.isFirstResponder() { // another way to shift on the bottom view
-            self.view.frame.origin.y = 0
+        if BottomTextField.isFirstResponder() { // another way to shift on the bottom view
+            view.frame.origin.y = 0
         }
     }
     
@@ -175,7 +175,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let meme = generateMemedImage()
         let shareActivityViewController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
         
-        self.presentViewController(shareActivityViewController, animated: true, completion: nil)
+        presentViewController(shareActivityViewController, animated: true, completion: nil)
         
         shareActivityViewController.completionWithItemsHandler = {(activity, completed, items, error) in
             print("Activity: \(activity)\nCompleted: \(completed)\nItems: \(items)\nError: \(error)")
