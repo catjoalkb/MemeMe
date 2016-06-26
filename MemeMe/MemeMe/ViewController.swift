@@ -53,7 +53,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) // disable camera if unavailable
-        view.frame.origin.y = 0
         subscribeToKeyboardNotifications()
     }
     
@@ -114,7 +113,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // Move view upward when keyboard appears
     func keyboardWillShow(notification: NSNotification) {
         if BottomTextField.editing {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = -getKeyboardHeight(notification) // assign negative height value here instead of compound operator like -=, mainly to avoid bugs. See: https://discussions.udacity.com/t/mememe-v1-bottom-text/168178/2
         }
     }
     
@@ -175,15 +174,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let meme = generateMemedImage()
         let shareActivityViewController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
         
-        presentViewController(shareActivityViewController, animated: true, completion: nil)
-        
         shareActivityViewController.completionWithItemsHandler = {(activity, completed, items, error) in
             print("Activity: \(activity)\nCompleted: \(completed)\nItems: \(items)\nError: \(error)")
             if (completed) {
                 self.save()
             }
-
         }
+        
+        presentViewController(shareActivityViewController, animated: true, completion: nil)
     }
 }
 

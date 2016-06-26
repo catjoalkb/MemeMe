@@ -52,25 +52,35 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fSK-Ro-9Oc" userLabel="Bottom Text Field">
-                                <rect key="frame" x="200" y="492" width="200" height="30"/>
+                                <rect key="frame" x="20" y="492" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="A1K-ME-fiQ"/>
                                     <constraint firstAttribute="height" constant="30" id="mKi-du-t6j"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="A1K-ME-fiQ"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="textFieldDidBeginEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="5q2-us-KXc"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ds-vu-FjY" userLabel="Top Text Field">
-                                <rect key="frame" x="200" y="105" width="200" height="30"/>
+                                <rect key="frame" x="20" y="105" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="oDN-25-P69"/>
                                     <constraint firstAttribute="width" constant="200" id="pBD-J1-nQ8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="pBD-J1-nQ8"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="textFieldDidBeginEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="Cu4-b7-l4E"/>
                                 </connections>
@@ -81,22 +91,29 @@
                             <constraint firstItem="Ndr-I3-Kpx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="4oa-rZ-wkh"/>
                             <constraint firstItem="fSK-Ro-9Oc" firstAttribute="top" secondItem="Ndr-I3-Kpx" secondAttribute="bottom" constant="-64" id="6sp-1d-x2d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gzX-gM-AnP" secondAttribute="trailing" constant="-20" id="7M8-GJ-bEw"/>
+                            <constraint firstItem="rVC-ip-AQl" firstAttribute="top" secondItem="fSK-Ro-9Oc" secondAttribute="bottom" constant="34" id="7b3-M1-7hS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3Ds-vu-FjY" secondAttribute="trailing" id="7z6-sh-e1U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ndr-I3-Kpx" secondAttribute="trailing" constant="-20" id="8Zd-w7-eZQ"/>
                             <constraint firstItem="gzX-gM-AnP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="9rm-QB-RDa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fSK-Ro-9Oc" secondAttribute="trailing" id="D4g-Nw-uuV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rVC-ip-AQl" secondAttribute="trailing" constant="-20" id="E25-0Q-vsL"/>
                             <constraint firstItem="gzX-gM-AnP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="HJQ-gC-QAK"/>
                             <constraint firstItem="3Ds-vu-FjY" firstAttribute="centerX" secondItem="Ndr-I3-Kpx" secondAttribute="centerX" id="MSJ-0Z-vCW"/>
                             <constraint firstItem="gzX-gM-AnP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="WgR-Ke-PVp"/>
                             <constraint firstItem="Ndr-I3-Kpx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="Xr6-t3-UJp"/>
+                            <constraint firstItem="3Ds-vu-FjY" firstAttribute="top" secondItem="gzX-gM-AnP" secondAttribute="bottom" constant="41" id="ZF5-kO-5RN"/>
+                            <constraint firstItem="fSK-Ro-9Oc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Zo8-qr-y2e"/>
                             <constraint firstItem="fSK-Ro-9Oc" firstAttribute="centerX" secondItem="Ndr-I3-Kpx" secondAttribute="centerX" id="bDn-Li-2t1"/>
                             <constraint firstItem="Ndr-I3-Kpx" firstAttribute="top" secondItem="3Ds-vu-FjY" secondAttribute="bottom" constant="-70" id="bRF-92-HSL"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rVC-ip-AQl" secondAttribute="bottom" id="g6w-Lp-3tY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ndr-I3-Kpx" secondAttribute="bottom" constant="44" id="hH8-Y5-x28"/>
                             <constraint firstItem="rVC-ip-AQl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="qKE-qn-uR9"/>
+                            <constraint firstItem="3Ds-vu-FjY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wN8-GW-EoJ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="9rm-QB-RDa"/>
+                                <exclude reference="MSJ-0Z-vCW"/>
                             </mask>
                         </variation>
                     </view>
