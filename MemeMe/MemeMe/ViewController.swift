@@ -132,12 +132,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     // MARK:- Save image
-    struct Meme {
-        let topText: String
-        let bottomText: String
-        let image: UIImage
-        let memedImage: UIImage
-    }
+
     
     func save() {
         //Create the meme
