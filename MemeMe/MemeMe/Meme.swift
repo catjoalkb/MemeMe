@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+// MARK: - Meme data structure
 struct Meme {
     let topText: String
     let bottomText: String
