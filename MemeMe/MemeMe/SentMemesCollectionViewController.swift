@@ -63,4 +63,15 @@ class SentMemesCollectionViewController: UICollectionViewController {
     }
     
     //MARK: - segue to add Meme veiw controller in storyboard
+    
+    
+    //MARK: - Segue when selecting cell
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let detailedVC = self.storyboard?.instantiateViewControllerWithIdentifier("detailedVC") as! detailedMemeImageViewController
+        detailedVC.meme = memes[indexPath.row]
+        navigationController?.pushViewController(detailedVC, animated: true)
+    }
+    
+
 }

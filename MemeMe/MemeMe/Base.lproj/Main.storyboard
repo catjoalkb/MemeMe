@@ -133,6 +133,39 @@
             </objects>
             <point key="canvasLocation" x="1278" y="886"/>
         </scene>
+        <!--Detailed Meme Image View Controller-->
+        <scene sceneID="33Y-o1-wyb">
+            <objects>
+                <viewController storyboardIdentifier="detailedVC" id="aoc-kW-qsF" customClass="detailedMemeImageViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="waa-er-7Av"/>
+                        <viewControllerLayoutGuide type="bottom" id="oKS-Q3-Wjl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9NY-HC-Em1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fdv-qD-TVE">
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fdv-qD-TVE" firstAttribute="top" secondItem="waa-er-7Av" secondAttribute="bottom" id="3xq-ix-W4e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fdv-qD-TVE" secondAttribute="trailing" id="5ei-ct-4Jl"/>
+                            <constraint firstItem="oKS-Q3-Wjl" firstAttribute="top" secondItem="Fdv-qD-TVE" secondAttribute="bottom" id="94v-vk-0jg"/>
+                            <constraint firstItem="Fdv-qD-TVE" firstAttribute="leading" secondItem="9NY-HC-Em1" secondAttribute="leadingMargin" id="W2Z-ex-Yb7"/>
+                            <constraint firstItem="Fdv-qD-TVE" firstAttribute="top" secondItem="waa-er-7Av" secondAttribute="bottom" id="uZA-sT-SfY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailedMemeImageView" destination="Fdv-qD-TVE" id="It8-aV-cwv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NZ4-7q-8h9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1957" y="948"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
