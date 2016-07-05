@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // share a model
     var memes = [Meme]()
 
+    
+//    func applicationDidFinishLaunching(application: UIApplication) {
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "rotated", name: UIDeviceOrientationDidChangeNotification, object: nil)
+//    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

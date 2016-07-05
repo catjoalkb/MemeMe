@@ -27,7 +27,6 @@ class SentMemesTableViewController: UITableViewController {
     //MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("tableView count \(memes.count)")
         return memes.count
     }
 
@@ -36,13 +35,12 @@ class SentMemesTableViewController: UITableViewController {
         let meme = memes[indexPath.row]
         cell.imageView?.image = meme.image
         cell.textLabel?.text = meme.topText + " " + meme.bottomText
-        print("cellForRow: \(meme)")
         return cell
     }
     
+    //MARK: - Segue to add Meme view controller programmically
     @IBAction func addNewMemedImage(sender: AnyObject) {
-        let addNewMemedImage = self.storyboard?.instantiateViewControllerWithIdentifier("addNewMemedImage") as! ViewController
-        self.navigationController?.pushViewController(addNewMemedImage, animated: true)
-        
+        let addNewMemedImageVC = self.storyboard?.instantiateViewControllerWithIdentifier("addNewMemedImage") as! ViewController
+        presentViewController(addNewMemedImageVC, animated:true, completion: nil)
     }
 }

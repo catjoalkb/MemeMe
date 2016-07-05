@@ -121,10 +121,13 @@
                     <navigationItem key="navigationItem" id="2dJ-ER-RND">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5vR-aq-irb">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="cG6-Wq-kvy"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" id="cG6-Wq-kvy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="flowLayout" destination="33O-qG-pCu" id="6dX-D1-Uhz"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tt5-tY-6KO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -149,6 +152,11 @@
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="O47-EL-9Vr">
                                             <connections>
                                                 <action selector="shareImage:" destination="BYZ-38-t0r" id="H48-Cf-L3S"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="w0H-xU-5of">
+                                            <connections>
+                                                <action selector="dismissVC:" destination="BYZ-38-t0r" id="lY2-gO-zKp"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
