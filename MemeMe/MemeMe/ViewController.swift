@@ -144,6 +144,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
+        print("Save successfully")
+        print(meme)
+        
+        var memes: [Meme] {
+            return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+        }
+        print("Count: ", memes.count)
 
     }
     

@@ -10,6 +10,13 @@ import UIKit
 
 class SentMemesTableViewController: UITableViewController {
     
+    //MARK: - Reload data to update
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     //MARK: - Stored sent memed images
     
     var memes: [Meme] {
@@ -20,6 +27,7 @@ class SentMemesTableViewController: UITableViewController {
     //MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("tableView count \(memes.count)")
         return memes.count
     }
 
@@ -27,27 +35,14 @@ class SentMemesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("TableCell")!
         let meme = memes[indexPath.row]
         cell.imageView?.image = meme.image
-        cell.textLabel?.text = meme.topText + meme.bottomText
+        cell.textLabel?.text = meme.topText + " " + meme.bottomText
+        print("cellForRow: \(meme)")
         return cell
     }
     
     @IBAction func addNewMemedImage(sender: AnyObject) {
         let addNewMemedImage = self.storyboard?.instantiateViewControllerWithIdentifier("addNewMemedImage") as! ViewController
-        
         self.navigationController?.pushViewController(addNewMemedImage, animated: true)
         
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

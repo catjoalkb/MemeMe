@@ -10,6 +10,12 @@ import UIKit
 
 class SentMemesCollectionViewController: UICollectionViewController {
     
+    //MARK: - Reload data to update
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.collectionView?.reloadData()
+    }
+    
     //MARK: - Stored sent memed images
     
     var memes: [Meme] {
@@ -25,11 +31,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionCell", forIndexPath: indexPath) as! CollectionCell
         let meme = memes[indexPath.row]
-        cell.image = meme.memedImage
+        cell.imageView.image = meme.memedImage
         return cell
     }
-    
-    
-    
-
 }
