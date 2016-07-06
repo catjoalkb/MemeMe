@@ -136,7 +136,7 @@
         <!--Detailed Meme Image View Controller-->
         <scene sceneID="33Y-o1-wyb">
             <objects>
-                <viewController storyboardIdentifier="detailedVC" id="aoc-kW-qsF" customClass="detailedMemeImageViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailedVC" id="aoc-kW-qsF" customClass="DetailedMemeImageViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="waa-er-7Av"/>
                         <viewControllerLayoutGuide type="bottom" id="oKS-Q3-Wjl"/>
@@ -145,7 +145,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fdv-qD-TVE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fdv-qD-TVE">
                                 <rect key="frame" x="20" y="20" width="560" height="580"/>
                             </imageView>
                         </subviews>
@@ -166,10 +166,10 @@
             </objects>
             <point key="canvasLocation" x="1957" y="948"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Meme Image View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="addNewMemedImage" id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addNewMemedImage" id="BYZ-38-t0r" customClass="CreateMemeImageViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>

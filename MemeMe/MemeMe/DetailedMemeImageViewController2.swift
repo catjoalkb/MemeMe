@@ -1,5 +1,5 @@
 //
-//  detailedMemeImageViewController.swift
+//  DetailedMemeImageViewController.swift
 //  MemeMe
 //
 //  Created by wctjerry on 16/7/5.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class detailedMemeImageViewController: UIViewController {
+class DetailedMemeImageViewController: UIViewController {
 
     @IBOutlet weak var detailedMemeImageView: UIImageView!
     

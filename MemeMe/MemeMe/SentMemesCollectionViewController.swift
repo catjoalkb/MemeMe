@@ -68,7 +68,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
     //MARK: - Segue when selecting cell
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let detailedVC = self.storyboard?.instantiateViewControllerWithIdentifier("detailedVC") as! detailedMemeImageViewController
+        let detailedVC = self.storyboard?.instantiateViewControllerWithIdentifier("detailedVC") as! DetailedMemeImageViewController
         detailedVC.meme = memes[indexPath.row]
         navigationController?.pushViewController(detailedVC, animated: true)
     }

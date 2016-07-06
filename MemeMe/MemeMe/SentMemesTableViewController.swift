@@ -41,14 +41,14 @@ class SentMemesTableViewController: UITableViewController {
     //MARK: - Segue when selecting cell
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let detailedVC = self.storyboard?.instantiateViewControllerWithIdentifier("detailedVC") as! detailedMemeImageViewController
+        let detailedVC = self.storyboard?.instantiateViewControllerWithIdentifier("detailedVC") as! DetailedMemeImageViewController
         detailedVC.meme = memes[indexPath.row]
         navigationController?.pushViewController(detailedVC, animated: true)
     }
     
     //MARK: - Segue to add Meme view controller programmically
     @IBAction func addNewMemedImage(sender: AnyObject) {
-        let addNewMemedImageVC = self.storyboard?.instantiateViewControllerWithIdentifier("addNewMemedImage") as! ViewController
+        let addNewMemedImageVC = self.storyboard?.instantiateViewControllerWithIdentifier("addNewMemedImage") as! CreateMemeImageViewController
         presentViewController(addNewMemedImageVC, animated:true, completion: nil)
     }
 }
