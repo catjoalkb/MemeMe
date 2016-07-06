@@ -102,7 +102,9 @@ class CreateMemeImageViewController: UIViewController, UIImagePickerControllerDe
     
     // MARK:- Edit text
     @IBAction func textFieldDidBeginEditing(textField: UITextField) {
-        textField.text = ""
+        if topTextField.text ==  "TOP" || BottomTextField.text == "BOTTOM" {
+            textField.text = ""
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -177,6 +179,7 @@ class CreateMemeImageViewController: UIViewController, UIImagePickerControllerDe
         shareActivityViewController.completionWithItemsHandler = {(activity, completed, items, error) in
             print("Activity: \(activity)\nCompleted: \(completed)\nItems: \(items)\nError: \(error)")
             if (completed) {
+                self.dismissViewControllerAnimated(true, completion: nil)
                 self.save()
             }
         }
